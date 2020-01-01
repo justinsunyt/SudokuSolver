@@ -18,23 +18,23 @@ board = [
 
 
 def get_input(row, col):
-    board[row][col] = "*" #replace current position with cursor *
+    board[row][col] = "*" # replace current position with cursor *
     print("")
     print_board(board)
     num = input("Please enter an integer between 1-9 in the position of the cursor (*), or enter 0 to indicate an empty grid: ")
     
-    #if q is pressed, quit
+    # if q is pressed, quit
     if num == "q": 
         global isRun
         isRun = 0
     else:
         try:
-            if int(num) < 0 or int(num) > 9: #if entered number is above 9 or below 0, prompt user to retry
+            if int(num) < 0 or int(num) > 9: # if entered number is above 9 or below 0, prompt user to retry
                 print("\nPlease enter a valid integer.")
                 get_input(row,col)
             else:
                 board[row][col] = int(num)
-        except: #if entered input is not an integer, prompt user to retry
+        except: # if entered input is not an integer, prompt user to retry
             print("\nPlease enter an integer.")
             get_input(row,col)
     
@@ -66,7 +66,7 @@ def main():
             
     if isRun == 1:
         solve(board)
-        if verify(board) == False: #verifies board once no grid is left empty
+        if verify(board) == False: # verifies board once no grid is left empty
             print("\nInvalid board.")
         elif solve(board) == True:
             print("\nSolution:")
